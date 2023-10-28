@@ -15,8 +15,8 @@ class ContactosAdapter(val contactos: List<Contacto>, val listener: MainActivity
         fun bind(contacto: Contacto){
             with(binding){
                 nombre.text = contacto.nombre
-                email.text = contacto.email
-                telefono.text = contacto.telefono
+                email?.text = contacto.email
+                telefono?.text = contacto.telefono
 
                 Glide.with(imagen)
                     .load(contacto.foto)

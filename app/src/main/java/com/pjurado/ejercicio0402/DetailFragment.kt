@@ -2,17 +2,17 @@ package com.pjurado.ejercicio0402
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.pjurado.ejercicio0402.databinding.FragmentDetailBinding
 
 
-class DetailFragment : Fragment(R.layout.fragment_detail) {
+class DetailFragment(val llamar: (String?) -> Unit, val email: (String?) -> Unit) : Fragment(R.layout.fragment_detail) {
 
     companion object {
         const val CONTACTO = "contacto"
+        const val LLAMAR = "llamar"
+        const val EMAIL = "email"
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -24,21 +24,15 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
                     .load(contacto?.foto)
                     .into(imagen)
                 email.setOnClickListener {
-                    mandaEmail(contacto?.email)
+                    email(contacto?.telefono)
                 }
                 telefono.setOnClickListener {
-                    llamaTelefono(contacto?.telefono)
+                    llamar(contacto?.email)
                 }
             }
         }
 
     }
 
-    private fun llamaTelefono(telefono: String?) {
-        TODO("Not yet implemented")
-    }
 
-    private fun mandaEmail(email: String?) {
-        TODO("Not yet implemented")
-    }
 }
